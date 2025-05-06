@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FoodCard from "@/components/FoodCard";
@@ -51,6 +51,24 @@ const Hero = () => (
         </Button>
       </Link>
     </motion.div>
+
+    <motion.img
+      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300"
+      alt="Floating food"
+      className="absolute right-10 top-1/4 hidden lg:block rounded-full shadow-lg w-32 h-32 object-cover"
+      initial={{ y: 0 }}
+      animate={{ y: [0, -15, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    <motion.img
+      src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=300"
+      alt="Floating food"
+      className="absolute left-10 bottom-1/4 hidden lg:block rounded-full shadow-lg w-28 h-28 object-cover"
+      initial={{ y: 0 }}
+      animate={{ y: [0, -20, 0] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+    />
   </section>
 );
 
@@ -147,6 +165,187 @@ const PopularItems = ({ items }: { items: MenuItem[] }) => {
     </section>
   );
 };
+
+const OrderSteps = () => (
+  <section className="py-20 bg-white">
+    <div className="container mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="section-title">Easy Order Steps</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">Follow these simple steps to get your delicious meal</p>
+      </div>
+      
+      <div className="flex flex-wrap justify-center">
+        <div className="relative w-full lg:w-10/12 xl:w-8/12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { number: 1, title: "Select your Restaurant", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=300", description: "Choose from our network of restaurants" },
+              { number: 2, title: "Select your Dish", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300", description: "Browse through various menu options" },
+              { number: 3, title: "Pay Cash/Online", image: "https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?q=80&w=300", description: "Choose your preferred payment method" },
+              { number: 4, title: "Enjoy Your Meal", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=300", description: "Your food delivered right to your doorstep" }
+            ].map((step, index) => (
+              <motion.div 
+                key={index}
+                className="text-center relative z-10"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative mx-auto mb-6">
+                  <div className="w-32 h-32 rounded-full border-4 border-food-primary mx-auto flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={step.image} 
+                      alt={step.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-0 right-0 -mr-2 -mt-2 bg-food-primary w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                    {step.number}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="hidden md:block">
+            <div className="absolute top-16 left-[25%] right-[25%] h-0.5 bg-gray-200"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const TodaysMenu = () => (
+  <section className="py-20 relative overflow-hidden" style={{
+    backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1470')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}>
+    <div className="container mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="section-title text-white">Today's Menu</h2>
+        <p className="text-gray-300 max-w-2xl mx-auto">Discover our chef's special selection for today</p>
+      </div>
+      
+      <div className="max-w-5xl mx-auto">
+        {[
+          { name: "Mix Salad", price: "$10", description: "Fresh vegetables tossed with our house dressing", image: "https://images.unsplash.com/photo-1607532941433-304659e8198a?q=80&w=200" },
+          { name: "Green Garden Salad", price: "$12", description: "Seasonal greens with balsamic vinaigrette", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=200" },
+          { name: "Grilled Shrimp Salad", price: "$14", description: "Succulent shrimp on a bed of fresh greens", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=200" },
+          { name: "Chicken Caesar Salad", price: "$10", description: "Classic caesar with grilled chicken breast", image: "https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?q=80&w=200" }
+        ].map((item, index) => (
+          <motion.div 
+            key={index} 
+            className="flex items-center mb-8 bg-black/20 rounded-lg p-4 backdrop-blur-sm"
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+          >
+            <img src={item.image} alt={item.name} className="w-20 h-20 rounded-full object-cover mr-6" />
+            <div className="flex-1">
+              <h3 className="text-xl font-medium text-white">{item.name}</h3>
+              <p className="text-gray-300">{item.description}</p>
+            </div>
+            <div className="text-2xl font-bold text-food-primary">{item.price}</div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const ClientTestimonials = () => (
+  <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <div className="container mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="section-title">What Our Clients Are Saying</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">Hear from our satisfied customers</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {[
+          { name: "Daniel Parker", position: "Food Critic", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100", text: "Exceptional flavors and prompt delivery. The packaging was excellent, keeping the food hot until it reached my doorstep." },
+          { name: "Sarah Thompson", position: "Regular Customer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100", text: "I order at least twice a week. The variety of options and consistent quality keep me coming back. Highly recommended!" },
+          { name: "Michael Chen", position: "Food Blogger", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100", text: "As someone who reviews food for a living, I can confidently say this is among the best food delivery services I've experienced." }
+        ].map((testimonial, index) => (
+          <motion.div 
+            key={index}
+            className="bg-white p-6 rounded-lg shadow-md relative"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center mb-4">
+              <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full object-cover mr-4" />
+              <div>
+                <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                <p className="text-gray-500">{testimonial.position}</p>
+              </div>
+            </div>
+            <p className="text-gray-600 italic mb-4">"{testimonial.text}"</p>
+            <div className="flex text-yellow-500">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              ))}
+            </div>
+            <div className="absolute text-6xl text-gray-100 -bottom-4 -right-4 opacity-50 font-serif">&#8220;</div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const MealTimes = () => (
+  <section className="py-20 bg-white">
+    <div className="container mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="section-title">Meals For Every Time</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">We've got you covered for all your meals throughout the day</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        {[
+          { title: "Brunch", image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=300", description: "Start your day right with our nutritious and delicious brunch options" },
+          { title: "Lunch", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=300", description: "Quick, healthy, and satisfying meals perfect for your midday break" },
+          { title: "Dinner", image: "https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=300", description: "End your day with our exquisite dinner selections crafted by our chefs" }
+        ].map((meal, index) => (
+          <motion.div 
+            key={index} 
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="relative overflow-hidden rounded-full mx-auto mb-6 w-60 h-60 shadow-lg">
+              <img 
+                src={meal.image} 
+                alt={meal.title} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              />
+            </div>
+            <h3 className="text-2xl font-bold mb-3">{meal.title}</h3>
+            <p className="text-gray-600 mx-auto max-w-xs">{meal.description}</p>
+            <Link to="/menu" className="mt-4 inline-block">
+              <Button variant="outline" className="mt-4 border-food-primary text-food-primary hover:bg-food-primary hover:text-white">
+                View Menu
+              </Button>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 const HowItWorks = () => (
   <section className="py-20 bg-gray-50">
@@ -378,6 +577,10 @@ const Index = () => {
         <Hero />
         <Features />
         <PopularItems items={menuItems} />
+        <OrderSteps />
+        <TodaysMenu />
+        <ClientTestimonials />
+        <MealTimes />
         <HowItWorks />
         <Testimonials reviews={reviews} />
         <Stats />
