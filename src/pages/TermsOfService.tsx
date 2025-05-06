@@ -17,70 +17,65 @@ const TermsOfService = () => {
               </p>
             </div>
             
-            <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
               <div className="prose max-w-none">
+                <h2 className="text-2xl font-semibold mb-4">Welcome to FoodEats</h2>
                 <p>
-                  Please read these Terms of Service carefully before using the FoodEats website or mobile application.
+                  These Terms of Service govern your use of the FoodEats website and food ordering services. By accessing or using our service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">1. Acceptance of Terms</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Use of Service</h2>
                 <p>
-                  By accessing or using our service, you agree to be bound by these Terms. If you disagree with any part of these terms, you may not access the service.
+                  Our service allows you to browse restaurant menus, place food orders, and arrange for delivery or pickup. By using our service, you agree to provide accurate information for order processing and delivery.
+                </p>
+                <p>
+                  You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">2. Use of the Service</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Orders and Payments</h2>
                 <p>
-                  You agree to use the service only for lawful purposes and in accordance with these Terms. You agree not to:
+                  When you place an order through our service, you are offering to purchase the items you have selected. We reserve the right to refuse or cancel your order for any reason, including but not limited to product availability, errors in pricing or product information, or suspected fraud.
                 </p>
-                <ul className="list-disc pl-6 mb-4">
-                  <li>Use the service in any way that violates applicable laws or regulations</li>
-                  <li>Use the service to engage in any fraudulent activity</li>
-                  <li>Interfere with or disrupt the service</li>
-                  <li>Attempt to access areas not intended for users</li>
-                </ul>
-                
-                <h2 className="text-xl font-bold mt-6 mb-4">3. User Accounts</h2>
                 <p>
-                  When you create an account with us, you must provide accurate and complete information. You are responsible for maintaining the confidentiality of your account and password.
+                  Payment must be made at the time of order placement. We accept various payment methods as displayed on our website. You agree to provide current, complete, and accurate purchase information for all purchases made via our service.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">4. Orders and Payments</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Delivery and Refunds</h2>
                 <p>
-                  By placing an order, you agree to pay the full amount for the items ordered, plus any applicable taxes and delivery fees. All payments are processed securely through our payment providers.
+                  Delivery times are estimates and may vary based on factors such as traffic, weather conditions, and restaurant preparation times. We are not responsible for delays caused by factors outside our control.
+                </p>
+                <p>
+                  If you are dissatisfied with your order, please contact us within 24 hours. Refunds or credits may be issued at our discretion, depending on the circumstances.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">5. Delivery and Cancellations</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">User Content</h2>
                 <p>
-                  Delivery times are estimates and may vary based on restaurant preparation times, traffic, and other factors. Orders can be modified or canceled within 5 minutes of placing them.
+                  Our service may allow you to post reviews, comments, and ratings. By posting content, you grant us a non-exclusive, royalty-free, perpetual, and worldwide license to use, modify, publicly perform, publicly display, reproduce, and distribute such content on and through our service.
+                </p>
+                <p>
+                  You agree not to post content that is illegal, harmful, threatening, abusive, defamatory, or otherwise objectionable.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">6. Refunds</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Intellectual Property</h2>
                 <p>
-                  Refunds may be issued for orders that are incorrect, damaged, or significantly late. All refund requests must be submitted within 24 hours of delivery.
+                  The service and its original content, features, and functionality are and will remain the exclusive property of FoodEats and its licensors. The service is protected by copyright, trademark, and other laws.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">7. Intellectual Property</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Limitation of Liability</h2>
                 <p>
-                  The service and its original content, features, and functionality are owned by FoodEats and are protected by copyright and other intellectual property laws.
+                  In no event shall FoodEats, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">8. Limitation of Liability</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to Terms</h2>
                 <p>
-                  In no event shall FoodEats, its directors, employees, or agents be liable for any indirect, incidental, special, consequential, or punitive damages.
+                  We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
                 </p>
                 
-                <h2 className="text-xl font-bold mt-6 mb-4">9. Changes to Terms</h2>
-                <p>
-                  We reserve the right to modify these Terms at any time. We will notify users of any significant changes by posting a notice on our website.
-                </p>
-                
-                <h2 className="text-xl font-bold mt-6 mb-4">10. Contact Us</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
                 <p>
                   If you have any questions about these Terms, please contact us at:
-                </p>
-                <p>
-                  Email: legal@foodeats.com<br />
-                  Phone: +1 (555) 123-4567
+                  <br />
+                  <a href="mailto:terms@foodeats.com" className="text-food-primary">terms@foodeats.com</a>
                 </p>
               </div>
             </div>

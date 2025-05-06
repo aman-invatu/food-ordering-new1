@@ -2,12 +2,20 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Message sent",
+      description: "We'll get back to you as soon as possible.",
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -17,96 +25,71 @@ const Contact = () => {
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold mb-3">Contact Us</h1>
               <p className="text-gray-600 max-w-xl mx-auto">
-                Have questions or feedback? We'd love to hear from you!
+                Have questions or feedback? We'd love to hear from you.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Contact Form */}
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
-                <form className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Your Name
-                    </label>
-                    <Input id="name" placeholder="John Doe" />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address
-                    </label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                      Subject
-                    </label>
-                    <Input id="subject" placeholder="How can we help?" />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
-                    </label>
-                    <Textarea id="message" placeholder="Your message" className="min-h-[150px]" />
-                  </div>
-                  
-                  <Button className="w-full bg-food-primary hover:bg-food-primary/90">
-                    Send Message
-                  </Button>
-                </form>
-              </div>
-              
-              {/* Contact Information */}
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <Mail className="w-6 h-6 text-food-primary mr-4 mt-1" />
-                    <div>
-                      <h3 className="font-medium">Email</h3>
-                      <p className="text-gray-600">support@foodeats.com</p>
+            <div className="max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Contact Form */}
+                <div className="md:col-span-2 bg-white p-8 rounded-lg shadow-md">
+                  <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="block font-medium text-gray-700">Name</label>
+                        <Input id="name" placeholder="Your Name" required />
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="block font-medium text-gray-700">Email</label>
+                        <Input id="email" type="email" placeholder="your@email.com" required />
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <Phone className="w-6 h-6 text-food-primary mr-4 mt-1" />
-                    <div>
-                      <h3 className="font-medium">Phone</h3>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                    <div className="space-y-2">
+                      <label htmlFor="subject" className="block font-medium text-gray-700">Subject</label>
+                      <Input id="subject" placeholder="How can we help?" required />
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <MapPin className="w-6 h-6 text-food-primary mr-4 mt-1" />
+                    <div className="space-y-2">
+                      <label htmlFor="message" className="block font-medium text-gray-700">Message</label>
+                      <Textarea id="message" placeholder="Tell us more about your inquiry..." rows={5} required />
+                    </div>
+                    <Button type="submit" className="bg-food-primary hover:bg-food-primary/90">
+                      Send Message
+                    </Button>
+                  </form>
+                </div>
+                
+                {/* Contact Info */}
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                  <h2 className="text-2xl font-semibold mb-6">Contact Info</h2>
+                  <div className="space-y-6">
                     <div>
-                      <h3 className="font-medium">Address</h3>
-                      <p className="text-gray-600">
+                      <h3 className="font-medium text-gray-900">Our Address</h3>
+                      <address className="not-italic mt-1 text-gray-600">
                         123 Delicious Street<br />
                         Foodville, FD 12345
+                      </address>
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Email Us</h3>
+                      <a href="mailto:support@foodeats.com" className="text-food-primary mt-1 block">
+                        support@foodeats.com
+                      </a>
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Call Us</h3>
+                      <a href="tel:+15551234567" className="text-food-primary mt-1 block">
+                        +1 (555) 123-4567
+                      </a>
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Business Hours</h3>
+                      <p className="mt-1 text-gray-600">
+                        Monday - Friday: 8:00 AM - 9:00 PM<br />
+                        Saturday: 10:00 AM - 10:00 PM<br />
+                        Sunday: 10:00 AM - 8:00 PM
                       </p>
                     </div>
-                  </div>
-                  
-                  <div className="pt-4">
-                    <h3 className="font-medium mb-2">Business Hours</h3>
-                    <ul className="space-y-1 text-gray-600">
-                      <li className="flex justify-between">
-                        <span>Monday - Friday:</span>
-                        <span>8:00 AM - 9:00 PM</span>
-                      </li>
-                      <li className="flex justify-between">
-                        <span>Saturday:</span>
-                        <span>10:00 AM - 10:00 PM</span>
-                      </li>
-                      <li className="flex justify-between">
-                        <span>Sunday:</span>
-                        <span>10:00 AM - 8:00 PM</span>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
